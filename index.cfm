@@ -91,7 +91,9 @@
 <h2>Credits</h2>
 <p>
 	This plugin was created by <a href="http://www.clearcrystalmedia.com/pm/">Chris Peters</a> with support from
-	<a href="http://www.liquifusion.com/">Liquifusion Studios</a>.
+	<a href="http://www.liquifusion.com/">Liquifusion Studios</a>. Thanks to
+	<a href="http://www.iamjamesgibson.com/">James Gibson</a> for technical advice and
+	<a href="http://talltroym.posterous.com/">Troy Murray</a> for assistance with Wheels compatibility testing. 
 </p>
 <p>
 	To submit an issue or fork this plugin, visit the
