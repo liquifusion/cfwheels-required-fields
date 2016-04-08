@@ -1,24 +1,24 @@
-﻿<cffunction name="$getFieldLabel" mixin="controller" returntype="string" access="public" output="false">
+﻿<cffunction name="$getFieldLabel" mixin="controller" returntype="string" output="false">
 	<cfargument name="objectName" type="any" required="true">
 	<cfargument name="property" type="string" required="true">
 	<cfargument name="label" type="string" required="true">
 	<cfscript>
 		var loc = {};
+		loc.fieldLabelArgs = Duplicate(arguments);
 		
 		loc.coreGetFieldLabel = core.$getFieldLabel;
-		loc.label = loc.coreGetFieldLabel(argumentCollection=arguments);
+		loc.label = loc.coreGetFieldLabel(argumentCollection=loc.fieldLabelArgs);
 		
-		if (IsSimpleValue(arguments.objectName))
-		{ 
+		if (IsSimpleValue(arguments.objectName)) {
 			loc.object = Evaluate(arguments.objectName);
-			if (loc.object.isNew())
-			{
+
+			if (loc.object.isNew()) {
 				loc.when = "onCreate,onSave";
 			}
 			else {
 				loc.when = "onUpdate,onSave";
 			}
-			
+
 			if (( IsObject(loc.object) && Len(loc.label) && loc.object.$validationExists(arguments.property, "validatesPresenceOf")
 			&& ( !StructKeyExists(arguments, "required") || (StructKeyExists(arguments, "required") && arguments.required) ) )
 			|| ( StructKeyExists(arguments, "required") && arguments.required ))
@@ -26,15 +26,14 @@
 				loc.label = $appendRequiredFieldIndicator(loc.label);
 			}
 		}
-		else if (StructKeyExists(arguments, "required") && arguments.required)
-		{
+		else if (StructKeyExists(arguments, "required") && arguments.required) {
 			loc.label = $appendRequiredFieldIndicator(loc.label);
 		}
 	</cfscript>
 	<cfreturn loc.label>
 </cffunction>
 
-<cffunction name="$appendRequiredFieldIndicator" mixin="controller" returntype="string" hint="Adds return value to label and returns it.">
+<cffunction name="$appendRequiredFieldIndicator" mixin="controller" returntype="string" hint="Adds return value to label and returns it." output="false">
 	<cfargument name="label" type="string" required="true" hint="Label to modify.">
 	<cfscript>
 		var loc = { label=arguments.label };
