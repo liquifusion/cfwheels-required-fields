@@ -9,7 +9,6 @@
 	
 	<cfinclude template="model/validations.cfm">
 	<cfinclude template="view/forms.cfm">
-	<cfinclude template="view/miscellaneous.cfm">
 	
 	<cffunction name="$initRequiredFields" mixin="controller" hint="Initializes application variables used to generate the required field indicator.">
 		<cfparam name="application.requiredFields.containerElement" type="string" default="span">
