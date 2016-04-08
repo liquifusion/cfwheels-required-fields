@@ -19,10 +19,10 @@ the `required` argument to `true` or `false` in the call to the form helper:
 
 ```coldfusion
 <cfoutput>
-<!--- Force `name` field to required -->
+<!--- Force `name` field to required --->
 #textField(objectName="category", property="name", required=true)#
 
-<!--- Force `slug` field to appear as optional -->
+<!--- Force `slug` field to appear as optional --->
 #textField(objectName="category", property="slug", required=false)#
 </cfoutput>
 ```
@@ -32,7 +32,7 @@ You can also use this plugin with the form tag functions by manually adding the
 
 ```coldfusion
 <cfoutput>
-<--- The "Tag" form helpers always need the `required` argument -->
+<!--- The "Tag" form helpers always need the `required` argument --->
 #textFieldTag(name="Search", value=params.search, required=true)#
 </cfoutput>
 ```
